@@ -1,0 +1,7 @@
+parameters:
+#    correspondencia.example.class: Proyecto\CorrespondenciaBundle\Example
+
+services:
+#    correspondencia.example:
+#        class: %correspondencia.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
