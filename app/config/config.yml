@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    
+parameters:
+    directory_documentos_correspondencia: %kernel.root_dir%/../web/uploads/documentos/correspondenciaRecibida/
 
 framework:
     #esi:             ~

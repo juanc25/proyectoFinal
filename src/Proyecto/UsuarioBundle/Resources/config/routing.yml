@@ -1,3 +1,7 @@
 usuario_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: UsuarioBundle:Default:index }
+    
+proyecto_users:
+    resource: "@UsuarioBundle/Resources/config/routing/usuario.yml"
+    prefix: /usuarios

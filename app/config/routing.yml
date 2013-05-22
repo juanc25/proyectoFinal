@@ -13,7 +13,11 @@ correspondencia:
 usuario:
     resource: "@UsuarioBundle/Resources/config/routing.yml"
     prefix:   /
-
+  
+portada:
+    pattern: /
+    defaults: { _controller: UsuarioBundle:Default:portada }
+    
 # Internal routing configuration to handle ESI
 # ****** WARNING ******
 # This route should be enabled with caution as it can open a security vulnerability

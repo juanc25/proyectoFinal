@@ -1,0 +1,30 @@
+recibidainterna:
+    pattern:  /
+    defaults: { _controller: "CorrespondenciaBundle:CorrespondenciaRecibidaInterna:index" }
+
+recibidainterna_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "CorrespondenciaBundle:CorrespondenciaRecibidaInterna:show" }
+
+recibidainterna_new:
+    pattern:  /new
+    defaults: { _controller: "CorrespondenciaBundle:CorrespondenciaRecibidaInterna:new" }
+
+recibidainterna_create:
+    pattern:  /create
+    defaults: { _controller: "CorrespondenciaBundle:CorrespondenciaRecibidaInterna:create" }
+    requirements: { _method: post }
+
+recibidainterna_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "CorrespondenciaBundle:CorrespondenciaRecibidaInterna:edit" }
+
+recibidainterna_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "CorrespondenciaBundle:CorrespondenciaRecibidaInterna:update" }
+    requirements: { _method: post }
+
+recibidainterna_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "CorrespondenciaBundle:CorrespondenciaRecibidaInterna:delete" }
+    requirements: { _method: post }

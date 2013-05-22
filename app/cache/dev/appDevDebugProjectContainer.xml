@@ -22,6 +22,7 @@
       <parameter key="UsuarioBundle">Proyecto\UsuarioBundle\UsuarioBundle</parameter>
       <parameter key="CorrespondenciaBundle">Proyecto\CorrespondenciaBundle\CorrespondenciaBundle</parameter>
       <parameter key="AlarmaBundle">Proyecto\AlarmaBundle\AlarmaBundle</parameter>
+      <parameter key="ReporteBundle">Proyecto\ReporteBundle\ReporteBundle</parameter>
       <parameter key="AcmeDemoBundle">Acme\DemoBundle\AcmeDemoBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -42,6 +43,7 @@
     <parameter key="locale">en</parameter>
     <parameter key="secret">1de98e539716644392794c7e6552f1910</parameter>
     <parameter key="database_path">null</parameter>
+    <parameter key="directory_documentos_correspondencia">D:/servidor 2.2/wamp/www/Proyecto/app/../web/uploads/documentos/correspondenciaRecibida/</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
     <parameter key="controller_name_converter.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser</parameter>
     <parameter key="response_listener.class">Symfony\Component\HttpKernel\EventListener\ResponseListener</parameter>
@@ -465,8 +467,8 @@
     <parameter key="jms_di_extra.directories" type="collection"/>
     <parameter key="jms_di_extra.cache_dir">D:/servidor 2.2/wamp/www/Proyecto/app/cache/dev/jms_diextra</parameter>
     <parameter key="jms_di_extra.doctrine_integration">true</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">D:/servidor 2.2/wamp/www/Proyecto/app/cache/dev/jms_diextra/doctrine/EntityManager_517497edab2be.php</parameter>
-    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager517497edab2be_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.file">D:/servidor 2.2/wamp/www/Proyecto/app/cache/dev/jms_diextra/doctrine/EntityManager_51783e9e893ae.php</parameter>
+    <parameter key="jms_di_extra.doctrine_integration.entity_manager.class">EntityManager51783e9e893ae_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager</parameter>
     <parameter key="security.secured_services" type="collection"/>
     <parameter key="security.access.method_interceptor.class">JMS\SecurityExtraBundle\Security\Authorization\Interception\MethodSecurityInterceptor</parameter>
     <parameter key="security.access.method_access_control" type="collection"/>
@@ -2150,15 +2152,20 @@
     <service id="doctrine.orm.default_manager_configurator" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator">
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="EntityManager517497edab2be_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
-      <file>D:/servidor 2.2/wamp/www/Proyecto/app/cache/dev/jms_diextra/doctrine/EntityManager_517497edab2be.php</file>
+    <service id="doctrine.orm.default_entity_manager" class="EntityManager51783e9e893ae_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager">
+      <file>D:/servidor 2.2/wamp/www/Proyecto/app/cache/dev/jms_diextra/doctrine/EntityManager_51783e9e893ae.php</file>
       <argument type="service">
         <service class="Doctrine\ORM\EntityManager" factory-method="create" public="false">
           <argument type="service" id="doctrine.dbal.default_connection"/>
           <argument type="service">
             <service class="Doctrine\ORM\Configuration" public="false">
               <call method="setEntityNamespaces">
-                <argument type="collection"/>
+                <argument type="collection">
+                  <argument key="UsuarioBundle">Proyecto\UsuarioBundle\Entity</argument>
+                  <argument key="CorrespondenciaBundle">Proyecto\CorrespondenciaBundle\Entity</argument>
+                  <argument key="AlarmaBundle">Proyecto\AlarmaBundle\Entity</argument>
+                  <argument key="ReporteBundle">Proyecto\ReporteBundle\Entity</argument>
+                </argument>
               </call>
               <call method="setMetadataCacheImpl">
                 <argument type="service">
@@ -2189,7 +2196,64 @@
               </call>
               <call method="setMetadataDriverImpl">
                 <argument type="service">
-                  <service class="Doctrine\ORM\Mapping\Driver\DriverChain" public="false"/>
+                  <service class="Doctrine\ORM\Mapping\Driver\DriverChain" public="false">
+                    <call method="addDriver">
+                      <argument type="service">
+                        <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                          <argument type="service" id="annotation_reader"/>
+                          <argument type="collection">
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\UsuarioBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\CorrespondenciaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\AlarmaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\ReporteBundle\Entity</argument>
+                          </argument>
+                        </service>
+                      </argument>
+                      <argument>Proyecto\UsuarioBundle\Entity</argument>
+                    </call>
+                    <call method="addDriver">
+                      <argument type="service">
+                        <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                          <argument type="service" id="annotation_reader"/>
+                          <argument type="collection">
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\UsuarioBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\CorrespondenciaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\AlarmaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\ReporteBundle\Entity</argument>
+                          </argument>
+                        </service>
+                      </argument>
+                      <argument>Proyecto\CorrespondenciaBundle\Entity</argument>
+                    </call>
+                    <call method="addDriver">
+                      <argument type="service">
+                        <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                          <argument type="service" id="annotation_reader"/>
+                          <argument type="collection">
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\UsuarioBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\CorrespondenciaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\AlarmaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\ReporteBundle\Entity</argument>
+                          </argument>
+                        </service>
+                      </argument>
+                      <argument>Proyecto\AlarmaBundle\Entity</argument>
+                    </call>
+                    <call method="addDriver">
+                      <argument type="service">
+                        <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
+                          <argument type="service" id="annotation_reader"/>
+                          <argument type="collection">
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\UsuarioBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\CorrespondenciaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\AlarmaBundle\Entity</argument>
+                            <argument>D:\servidor 2.2\wamp\www\Proyecto\src\Proyecto\ReporteBundle\Entity</argument>
+                          </argument>
+                        </service>
+                      </argument>
+                      <argument>Proyecto\ReporteBundle\Entity</argument>
+                    </call>
+                  </service>
                 </argument>
               </call>
               <call method="setProxyDir">

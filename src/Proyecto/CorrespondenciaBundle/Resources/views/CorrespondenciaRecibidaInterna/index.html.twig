@@ -1,0 +1,57 @@
+<h1>CorrespondenciaRecibidaInterna list</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Radicado</th>
+            <th>Alarma</th>
+            <th>Remitente</th>
+            <th>Fecha_doc</th>
+            <th>Anexo</th>
+            <th>Serie</th>
+            <th>Documento</th>
+            <th>Renombre_doc</th>
+            <th>Estado</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td><a href="{{ path('recibidainterna_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+            <td>{% if entity.fecha %}{{ entity.fecha|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.hora }}</td>
+            <td>{{ entity.radicado }}</td>
+            <td>{% if entity.alarma %}{{ entity.alarma|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.remitente }}</td>
+            <td>{% if entity.fechadoc %}{{ entity.fechadoc|date('Y-m-d H:i:s') }}{% endif %}</td>
+            <td>{{ entity.anexo }}</td>
+            <td>{{ entity.serie }}</td>
+            <td>{{ entity.documento }}</td>
+            <td>{{ entity.renombredoc }}</td>
+            <td>{{ entity.estado }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('recibidainterna_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('recibidainterna_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<ul>
+    <li>
+        <a href="{{ path('recibidainterna_new') }}">
+            Create a new entry
+        </a>
+    </li>
+</ul>

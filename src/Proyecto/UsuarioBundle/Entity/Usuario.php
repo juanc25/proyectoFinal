@@ -12,73 +12,75 @@ namespace Proyecto\UsuarioBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
- */
+* @ORM\Table(name="usuario")
+* @ORM\Entity
+*/
 class Usuario {
+    
+    
+    const STATUS_ACTIVE = 1;
+    const STATUS_INACTIVE = 2;
+    
   
     // Se declaran los atributos de la entidad usuario
      
     /**
      * @ORM\Id
-     * @ORM\Column(type="Integer")
+     * @ORM\Column(name="id",type="integer")
      * @ORM\GeneratedValue
      */
-    protected $use_code;
+    protected $id;
     /**
      *
-     * @ORM\Column(type="String", length=90) 
+     * @ORM\Column(type="string", length=90) 
      */
-    protected $use_name;
+    protected $useName;
     /**
      *
-     * @ORM\Column(type="String", length=100) 
+     * @ORM\Column(type="string", length=100) 
      */
-    protected $use_dependencia;
+    protected $useDependencia;
     /**
      *
-     * @ORM\Column(type="String", length=15) 
+     * @ORM\Column(type="string", length=15) 
      */
-    protected $use_phone;
+    protected $usePhone;
     /**
      *
-     * @ORM\Column(type="String", length=80) 
+     * @ORM\Column(type="string", length=80) 
      */
-    protected $use_email;
+    protected $useEmail;
     /**
      *
-     * @ORM\Column(type="String", length=40) 
+     * @ORM\Column(type="string", length=40) 
      */
-    protected $use_login;
+    protected $useLogin;
     /**
      *
-     * @ORM\Column(type="String", length=20)
+     * @ORM\Column(type="string", length=20)
      */
-    protected $use_password;
+    protected $usePassword;
     /**
      *
-     * @ORM\Column(type="String", length=70) 
+     * @ORM\Column(type="string", length=70) 
      */
-    protected $use_original;
+    protected $useOriginal;
     /**
      *
-     * @ORM\Column(type="String", length=70) 
+     * @ORM\Column(type="string", length=70) 
      */
-    protected $use_rename;
+    protected $useRename;
     /**
      *
-     * @ORM\Column(type="Integer", columnDefinition="ENUM('1', '2','3','4')") 
+     * @ORM\Column(type="integer") 
      */
-    protected $use_status;
+    protected $useStatus;
     /**
      *
-     * @ORM\Column(type="String", columnDefinition="ENUM('Administrador', 'Dependencia')") 
+     * @ORM\Column(type="string") 
      */
-    protected $use_type;
-    /**
-     *
-     * @ORM\Column(type="date") 
-     */
-    protected $use_date_create;
+    protected $useType;
+   
     
     /**
      * Metodo constructor de la clase
@@ -86,108 +88,167 @@ class Usuario {
     function __construct() {
         
     }
-    
-    public function getUse_code() {
-        return $this->use_code;
+    /**
+     * 
+     * @return type
+     */
+    public function getId() {
+        return $this->id;
     }
-
-    public function setUse_code($use_code) {
-        $this->use_code = $use_code;
+    /**
+     * 
+     * @param type $id
+     */
+    public function setId($id) {
+        $this->id = $id;
     }
-
-    public function getUse_name() {
-        return $this->use_name;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseName() {
+        return $this->useName;
     }
-
-    public function setUse_name($use_name) {
-        $this->use_name = $use_name;
+    /**
+     * 
+     * @param type $useName
+     */
+    public function setUseName($useName) {
+        $this->useName = $useName;
     }
-
-    public function getUse_dependencia() {
-        return $this->use_dependencia;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseDependencia() {
+        return $this->useDependencia;
     }
-
-    public function setUse_dependencia($use_dependencia) {
-        $this->use_dependencia = $use_dependencia;
+    /**
+     * 
+     * @param type $useDependencia
+     */
+    public function setUseDependencia($useDependencia) {
+        $this->useDependencia = $useDependencia;
     }
-
-    public function getUse_phone() {
-        return $this->use_phone;
+    /**
+     * 
+     * @return type
+     */
+    public function getUsePhone() {
+        return $this->usePhone;
     }
-
-    public function setUse_phone($use_phone) {
-        $this->use_phone = $use_phone;
+    /**
+     * 
+     * @param type $usePhone
+     */
+    public function setUsePhone($usePhone) {
+        $this->usePhone = $usePhone;
     }
-
-    public function getUse_email() {
-        return $this->use_email;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseEmail() {
+        return $this->useEmail;
     }
-
-    public function setUse_email($use_email) {
-        $this->use_email = $use_email;
+    /**
+     * 
+     * @param type $useEmail
+     */
+    public function setUseEmail($useEmail) {
+        $this->useEmail = $useEmail;
     }
-
-    public function getUse_login() {
-        return $this->use_login;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseLogin() {
+        return $this->useLogin;
     }
-
-    public function setUse_login($use_login) {
-        $this->use_login = $use_login;
+    /**
+     * 
+     * @param type $useLogin
+     */
+    public function setUseLogin($useLogin) {
+        $this->useLogin = $useLogin;
     }
-
-    public function getUse_password() {
-        return $this->use_password;
+    /**
+     * 
+     * @return type
+     */
+    public function getUsePassword() {
+        return $this->usePassword;
     }
-
-    public function setUse_password($use_password) {
-        $this->use_password = $use_password;
+    /**
+     * 
+     * @param type $usePassword
+     */
+    public function setUsePassword($usePassword) {
+        $this->usePassword = $usePassword;
     }
-
-    public function getUse_original() {
-        return $this->use_original;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseOriginal() {
+        return $this->useOriginal;
     }
-
-    public function setUse_original($use_original) {
-        $this->use_original = $use_original;
+    /**
+     * 
+     * @param type $useOriginal
+     */
+    public function setUseOriginal($useOriginal) {
+        $this->useOriginal = $useOriginal;
     }
-
-    public function getUse_rename() {
-        return $this->use_rename;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseRename() {
+        return $this->useRename;
     }
-
-    public function setUse_rename($use_rename) {
-        $this->use_rename = $use_rename;
+    /**
+     * 
+     * @param type $useRename
+     */
+    public function setUseRename($useRename) {
+        $this->useRename = $useRename;
     }
-
-    public function getUse_status() {
-        return $this->use_status;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseStatus() {
+        return $this->useStatus;
     }
-
-    public function setUse_status($use_status) {
-        $this->use_status = $use_status;
+    /**
+     * 
+     * @param type $useStatus
+     */
+    public function setUseStatus($useStatus) {
+        $this->useStatus = $useStatus;
     }
-
-    public function getUse_type() {
-        return $this->use_type;
+    /**
+     * 
+     * @return type
+     */
+    public function getUseType() {
+        return $this->useType;
     }
-
-    public function setUse_type($use_type) {
-        $this->use_type = $use_type;
+    /**
+     * 
+     * @param type $useType
+     */
+    public function setUseType($useType) {
+        $this->useType = $useType;
     }
-
-    public function getUse_date_create() {
-        return $this->use_date_create;
-    }
-
-    public function setUse_date_create($use_date_create) {
-        $this->use_date_create = $use_date_create;
-    }
-    
+    /**
+     * 
+     * @return type
+     */
     public function __toString() {
         
-        $this->use_dependencia;
-    } 
-   
+        return $this->useName;
+    }   
 }
-
 ?>

@@ -9,5 +9,7 @@ class DefaultController extends Controller
     public function indexAction($name)
     {
         return $this->render('CorrespondenciaBundle:Default:index.html.twig', array('name' => $name));
+        
+        $em = $this->getDoctrine()->getEntityManager();
     }
 }

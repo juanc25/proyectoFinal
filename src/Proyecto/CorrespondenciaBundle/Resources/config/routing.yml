@@ -1,3 +1,7 @@
 correspondencia_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: CorrespondenciaBundle:Default:index }
+    
+proyecto_correspondencia:
+    resource: "@CorrespondenciaBundle/Resources/config/routing/correspondenciarecibidainterna.yml"
+    prefix: /correspondencia

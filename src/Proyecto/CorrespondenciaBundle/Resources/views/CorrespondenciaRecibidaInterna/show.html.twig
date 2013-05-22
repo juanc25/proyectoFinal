@@ -1,0 +1,86 @@
+<h1>CorrespondenciaRecibidaInterna</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Fecha</th>
+            <td>{{ entity.fecha|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Hora</th>
+            <td>{{ entity.hora }}</td>
+        </tr>
+        <tr>
+            <th>Radicado</th>
+            <td>{{ entity.radicado }}</td>
+        </tr>
+        <tr>
+            <th>Alarma</th>
+            <td>{{ entity.alarma|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Remitente</th>
+            <td>{{ entity.remitente }}</td>
+        </tr>
+        <tr>
+            <th>Fecha_doc</th>
+            <td>{{ entity.fechadoc|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Anexo</th>
+            <td>{{ entity.anexo }}</td>
+        </tr>
+        <tr>
+            <th>Serie</th>
+            <td>{{ entity.serie }}</td>
+        </tr>
+        <tr>
+            <th>Documento</th>
+            <td>{{ entity.documento }}</td>
+        </tr>
+        <tr>
+            <th>Renombre_doc</th>
+            <td>{{ entity.renombredoc }}</td>
+        </tr>
+        <tr>
+            <th>Estado</th>
+            <td>{{ entity.estado }}</td>
+        </tr>
+        
+        <tr>
+            <th>Docmento</th>
+            <td>
+                {% if(entity.documento != '') %}
+                    <a target="_blank" href="{{ asset('uploads/documentos/correspondenciaRecibida/' ~entity.documento) }}">
+                        Descargar Documento
+                    </a>
+                {% endif %}
+                
+            </td>
+        </tr>
+        
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('recibidainterna') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('recibidainterna_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('recibidainterna_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
